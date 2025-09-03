@@ -68,6 +68,7 @@ describe('OpenAIContentGenerator', () => {
         },
       }),
       getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+      getEnableSystemMessage: vi.fn().mockReturnValue(true),
     } as unknown as Config;
 
     // Mock OpenAI client
@@ -1975,6 +1976,7 @@ describe('OpenAIContentGenerator', () => {
           },
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getEnableSystemMessage: vi.fn().mockReturnValue(true),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3294,6 +3296,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('dashscope-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getEnableSystemMessage: vi.fn().mockReturnValue(true),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3449,6 +3452,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('regular-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getEnableSystemMessage: vi.fn().mockReturnValue(true),
       } as unknown as Config;
 
       const contentGeneratorConfig = {

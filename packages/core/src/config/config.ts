@@ -231,6 +231,7 @@ export interface ConfigParameters {
   trustedFolder?: boolean;
   shouldUseNodePtyShell?: boolean;
   skipNextSpeakerCheck?: boolean;
+  enableSystemMessage?: boolean;
 }
 
 export class Config {
@@ -315,6 +316,7 @@ export class Config {
   private readonly trustedFolder: boolean | undefined;
   private readonly shouldUseNodePtyShell: boolean;
   private readonly skipNextSpeakerCheck: boolean;
+  private enableSystemMessage: boolean;
   private initialized: boolean = false;
 
   constructor(params: ConfigParameters) {
@@ -396,6 +398,7 @@ export class Config {
     this.trustedFolder = params.trustedFolder;
     this.shouldUseNodePtyShell = params.shouldUseNodePtyShell ?? false;
     this.skipNextSpeakerCheck = params.skipNextSpeakerCheck ?? false;
+    this.enableSystemMessage = params.enableSystemMessage ?? true;
 
     // Web search
     this.tavilyApiKey = params.tavilyApiKey;
@@ -825,6 +828,20 @@ export class Config {
       }>
     | undefined {
     return this.systemPromptMappings;
+  }
+
+  /**
+   * Get whether system message is enabled
+   */
+  getEnableSystemMessage(): boolean {
+    return this.enableSystemMessage;
+  }
+
+  /**
+   * Set whether system message is enabled
+   */
+  setEnableSystemMessage(enabled: boolean): void {
+    this.enableSystemMessage = enabled;
   }
 
   /**

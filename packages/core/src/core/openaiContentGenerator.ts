@@ -853,7 +853,10 @@ export class OpenAIContentGenerator implements ContentGenerator {
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [];
 
     // Handle system instruction from config
-    if (request.config?.systemInstruction) {
+    if (
+      request.config?.systemInstruction &&
+      this.config.getEnableSystemMessage()
+    ) {
       const systemInstruction = request.config.systemInstruction;
       let systemText = '';
 
