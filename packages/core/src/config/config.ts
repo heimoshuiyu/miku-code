@@ -398,7 +398,7 @@ export class Config {
     this.trustedFolder = params.trustedFolder;
     this.shouldUseNodePtyShell = params.shouldUseNodePtyShell ?? false;
     this.skipNextSpeakerCheck = params.skipNextSpeakerCheck ?? false;
-    this.enableSystemMessage = params.enableSystemMessage ?? true;
+    this.enableSystemMessage = params.enableSystemMessage ?? false;
 
     // Web search
     this.tavilyApiKey = params.tavilyApiKey;
