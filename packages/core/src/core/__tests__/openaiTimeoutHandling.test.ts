@@ -44,6 +44,7 @@ describe('OpenAIContentGenerator Timeout Handling', () => {
         authType: 'openai',
       }),
       getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+      getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
     } as unknown as Config;
 
     // Mock OpenAI client

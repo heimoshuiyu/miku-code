@@ -269,7 +269,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
     const createParams: Parameters<
       typeof this.client.chat.completions.create
     >[0] = {
-      model: this.model,
+      model: this.config.getModel(),
       messages,
       ...samplingParams,
       ...(this.buildMetadata(userPromptId) || {}),
@@ -311,7 +311,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
       // Log API response event for UI telemetry
       const responseEvent = new ApiResponseEvent(
         response.responseId || 'unknown',
-        this.model,
+        this.config.getModel(),
         durationMs,
         userPromptId,
         this.contentGeneratorConfig.authType,
@@ -343,7 +343,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
       const errorEvent = new ApiErrorEvent(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (error as any).requestID || 'unknown',
-        this.model,
+        this.config.getModel(),
         errorMessage,
         durationMs,
         userPromptId,
@@ -458,7 +458,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
           const errorEvent = new ApiErrorEvent(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (error as any).requestID || 'unknown',
-            this.model,
+            this.config.getModel(),
             errorMessage,
             durationMs,
             userPromptId,
@@ -510,7 +510,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
       const errorEvent = new ApiErrorEvent(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (error as any).requestID || 'unknown',
-        this.model,
+        this.config.getModel(),
         errorMessage,
         durationMs,
         userPromptId,
@@ -624,7 +624,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
     ];
     combinedResponse.responseId = lastResponse?.responseId;
     combinedResponse.createTime = lastResponse?.createTime;
-    combinedResponse.modelVersion = this.model;
+    combinedResponse.modelVersion = this.config.getModel();
     combinedResponse.promptFeedback = { safetyRatings: [] };
     combinedResponse.usageMetadata = finalUsageMetadata;
 
@@ -1351,7 +1351,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
       },
     ];
 
-    response.modelVersion = this.model;
+    response.modelVersion = this.config.getModel();
     response.promptFeedback = { safetyRatings: [] };
 
     // Add usage metadata if available
@@ -1500,7 +1500,7 @@ export class OpenAIContentGenerator implements ContentGenerator {
       ? chunk.created.toString()
       : new Date().getTime().toString();
 
-    response.modelVersion = this.model;
+    response.modelVersion = this.config.getModel();
     response.promptFeedback = { safetyRatings: [] };
 
     // Add usage metadata if available in the chunk

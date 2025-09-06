@@ -68,6 +68,7 @@ describe('OpenAIContentGenerator', () => {
         },
       }),
       getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+      getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       getEnableSystemMessage: vi.fn().mockReturnValue(true),
     } as unknown as Config;
 
@@ -174,6 +175,7 @@ describe('OpenAIContentGenerator', () => {
           maxRetries: 5,
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -948,6 +950,7 @@ describe('OpenAIContentGenerator', () => {
           enableOpenAILogging: true,
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-4'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -1076,6 +1079,7 @@ describe('OpenAIContentGenerator', () => {
           enableOpenAILogging: true,
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-4'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -1976,6 +1980,7 @@ describe('OpenAIContentGenerator', () => {
           },
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-4'),
         getEnableSystemMessage: vi.fn().mockReturnValue(true),
       } as unknown as Config;
 
@@ -2171,6 +2176,7 @@ describe('OpenAIContentGenerator', () => {
           enableOpenAILogging: true,
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2433,6 +2439,7 @@ describe('OpenAIContentGenerator', () => {
           },
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2500,6 +2507,7 @@ describe('OpenAIContentGenerator', () => {
           },
         }),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-4'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2594,6 +2602,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('test-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-4'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2647,6 +2656,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('dashscope-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-4'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2714,6 +2724,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('regular-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2769,6 +2780,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('other-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2827,6 +2839,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('other-base-url-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2885,6 +2898,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('streaming-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -2971,6 +2985,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('regular-streaming-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3054,6 +3069,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue(undefined), // Undefined session ID
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3117,6 +3133,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('no-base-url-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3175,6 +3192,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('undefined-auth-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3230,6 +3248,7 @@ describe('OpenAIContentGenerator', () => {
         getContentGeneratorConfig: vi.fn().mockReturnValue(undefined), // Undefined config
         getSessionId: vi.fn().mockReturnValue('undefined-config-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3296,6 +3315,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('dashscope-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
         getEnableSystemMessage: vi.fn().mockReturnValue(true),
       } as unknown as Config;
 
@@ -3378,6 +3398,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('dashscope-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
       } as unknown as Config;
 
       const contentGeneratorConfig = {
@@ -3452,6 +3473,7 @@ describe('OpenAIContentGenerator', () => {
         }),
         getSessionId: vi.fn().mockReturnValue('regular-session-id'),
         getCliVersion: vi.fn().mockReturnValue('1.0.0'),
+        getModel: vi.fn().mockReturnValue('gpt-3.5-turbo'),
         getEnableSystemMessage: vi.fn().mockReturnValue(true),
       } as unknown as Config;
 
