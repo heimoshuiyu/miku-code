@@ -22,6 +22,7 @@ import {
 import OpenAI from 'openai';
 import { safeJsonParse } from '../../utils/safeJsonParse.js';
 import { StreamingToolCallParser } from './streamingToolCallParser.js';
+import { Config } from '../../config/config.js';
 
 /**
  * Tool call accumulator for streaming responses
@@ -52,11 +53,13 @@ interface ParsedParts {
  */
 export class OpenAIContentConverter {
   private model: string;
+  private config: Config;
   private streamingToolCallParser: StreamingToolCallParser =
     new StreamingToolCallParser();
 
-  constructor(model: string) {
+  constructor(model: string, config: Config) {
     this.model = model;
+    this.config = config;
   }
 
   /**
@@ -225,6 +228,7 @@ export class OpenAIContentConverter {
     messages: OpenAI.Chat.ChatCompletionMessageParam[],
   ): void {
     if (!request.config?.systemInstruction) return;
+    if (!this.config.getEnableSystemMessage()) return;
 
     const systemText = this.extractTextFromContentUnion(
       request.config.systemInstruction,

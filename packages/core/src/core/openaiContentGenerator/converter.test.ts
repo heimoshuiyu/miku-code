@@ -7,12 +7,19 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { OpenAIContentConverter } from './converter.js';
 import { StreamingToolCallParser } from './streamingToolCallParser.js';
+import { Config } from '../../config/config.js';
 
 describe('OpenAIContentConverter', () => {
   let converter: OpenAIContentConverter;
+  let mockConfig: Config;
 
   beforeEach(() => {
-    converter = new OpenAIContentConverter('test-model');
+    // Create a mock Config object for testing
+    mockConfig = {
+      getEnableSystemMessage: () => false,
+    } as unknown as Config;
+
+    converter = new OpenAIContentConverter('test-model', mockConfig);
   });
 
   describe('resetStreamingToolCalls', () => {
