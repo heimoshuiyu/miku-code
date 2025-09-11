@@ -1,9 +1,11 @@
 type Model = string;
 type TokenCount = number;
 
+const HARDCODED_DEFAULT_TOKEN_LIMIT = 131_072;
+
 function parseTokenLimit(value: string | undefined): TokenCount {
   if (!value) {
-    return 131_072; // Default if env var is not set
+    return HARDCODED_DEFAULT_TOKEN_LIMIT;
   }
 
   const normalizedValue = value.toLowerCase().trim();
@@ -173,6 +175,9 @@ const PATTERNS: Array<[RegExp, TokenCount]> = [
 
 /** Return the token limit for a model string (uses normalize + ordered regex list). */
 export function tokenLimit(model: Model): TokenCount {
+  if (DEFAULT_TOKEN_LIMIT !== HARDCODED_DEFAULT_TOKEN_LIMIT) {
+    return DEFAULT_TOKEN_LIMIT;
+  }
   const norm = normalize(model);
 
   for (const [regex, limit] of PATTERNS) {
